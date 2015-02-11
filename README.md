@@ -27,9 +27,11 @@ Data exported may appear in duplicates if you are using the default 'selfie' tem
 	Tesseract 
 	MySQL
 
-* Configuration
+# Configuration
 
-* Database creation
+Install the Tesseract language packages needed 
+
+# Database creation
 
 	1. create dochive_mysql_development in MySQL
 
