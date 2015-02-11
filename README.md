@@ -1,4 +1,5 @@
-# dochive
+# dochive 
+### by Queen Anne's Revenge: Open Source Skunkworks
 
 This version of DocHive introduces many new features. It is still a work in progress, however, it is very functional. Today my second son Lucien will be born, so I better start sharing this code :)
 
@@ -9,7 +10,7 @@ This version of DocHive introduces many new features. It is still a work in prog
 	Upload a document and create new templates for your pages, then convert.
 
 
-# Buggy Notes: 
+## Buggy Notes: 
 
 You will need to refresh on the Files and Data pages to see updates.
 This version is designed to strictly support imaged based PDFs. 
@@ -17,25 +18,25 @@ On Linux the /tmp file may not remove generated Magick files. Manual cleanup per
 PDF images are currently expected in a Portrait style, Landscape images may be distorted.
 Data exported may appear in duplicates if you are using the default 'selfie' template.
 
-# Ruby version
+## Ruby version
 
 	Ruby 2.0.0p247
 
-# System dependencies
+## System dependencies
 
 	RMagick
 	Tesseract 
 	MySQL
 
-# Configuration
+## Configuration
 
 Install the Tesseract language packages needed 
 
-# Database creation
+## Database creation
 
 	1. create dochive_mysql_development in MySQL
 
-# Database initialization
+## Database initialization
 
 	1. Rename the file '/config/default.database.yml' to '/config/database.yml' and update your database user, password, and any other relavant settings.
 
@@ -45,7 +46,7 @@ Install the Tesseract language packages needed
 	3. Seed the database
 		bundle exec rake db:seed
 
-# How to run the application and background queues
+## How to run the application and background queues
 
 	In terminal #1 execute the following to run the rails applications
 
@@ -55,7 +56,7 @@ Install the Tesseract language packages needed
 
 		bundle exec rake jobs:work
 
-# Deployment instructions
+## Deployment instructions
 
 On Linux uncomment the line in the gemfile for therubyracer
 
