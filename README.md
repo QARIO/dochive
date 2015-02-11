@@ -57,7 +57,7 @@ Install the Tesseract language packages needed
 
 # Deployment instructions
 
-On Linux uncomment, the line in the gemfile for therubyracer
+On Linux uncomment the line in the gemfile for therubyracer
 
 	gem 'therubyracer', platforms: :ruby
 
