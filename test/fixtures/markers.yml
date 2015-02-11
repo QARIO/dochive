@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  template_id: 1
+  dimension: MyString
+  number: 1
+  offset: 1
+  intensity: 1
+
+two:
+  template_id: 1
+  dimension: MyString
+  number: 1
+  offset: 1
+  intensity: 1

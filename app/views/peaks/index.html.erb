@@ -1,0 +1,35 @@
+<h1>Listing peaks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Dimension</th>
+      <th>Number</th>
+      <th>Offset</th>
+      <th>Intensity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @peaks.each do |peak| %>
+      <tr>
+        <td><%= peak.page_id %></td>
+        <td><%= peak.dimension %></td>
+        <td><%= peak.number %></td>
+        <td><%= peak.offset %></td>
+        <td><%= peak.intensity %></td>
+        <td><%= link_to 'Show', peak %></td>
+        <td><%= link_to 'Edit', edit_peak_path(peak) %></td>
+        <td><%= link_to 'Destroy', peak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Peak', new_peak_path %>

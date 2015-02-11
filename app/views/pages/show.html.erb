@@ -1,0 +1,87 @@
+<div class="right"><h1>page details</h1></div>
+<br>
+<div class="xleft"><%= link_to "return to pages", "/documents/#{@page.document_id}/pages", :class=>'likeabutton' %></div>
+<div class="xleft"><%= link_to "re/process", "/documents/#{params[:id]}/repage", :class=>'likeabutton' %></div>
+<div class="xleft"><%= link_to "open template builder", "/documents/#{params[:id]}/tempbuil", :class=>'likeabutton' %><%#= link_to "open template builder", "/documents/#{params[:id]}/repage", :class=>'likeabutton' %></div>
+<div class="clr"></div>
+<hr />
+
+<div class="xleft">
+<% var = @page.path.gsub("/original/img5/","/original/medium/")+"#{@page.filename}".gsub(".png","_mdx.png") %>
+<% if File.exists?(var) then %>
+	<%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/medium/")+"#{@page.filename}".gsub(".png","_mdx.png")), "/pages/#{@page.id}")  %>
+<% else %>
+	<%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/medium/")+"#{@page.filename}".gsub(".png","_md.png")), "/pages/#{@page.id}")  %>
+<% end %>
+</div>
+
+<div class="xleft">
+
+	<p>
+	  <strong><%= @page.filename %></strong>
+	</p>
+	<hr>
+
+	<p>
+	  <strong>Skip:</strong>
+	  <%= @page.exclude %>
+	</p>
+
+	<p>
+	  <strong>Template:</strong>
+	  <%=@page.template_id %>
+	</p>
+	
+	<p>
+	  <strong>Page Number:</strong>
+	  <%= @page.number %>
+	</p>
+
+	<p>
+	  <strong>DPI:</strong>
+	  <%= @page.dpi %>
+	</p>
+
+	<p>
+	  <strong>Trim Top:</strong>
+	  <%= @page.top %>
+	</p>
+
+	<p>
+	  <strong>Trim Bottom:</strong>
+	  <%= @page.bottom %>
+	</p>
+
+	<p>
+	  <strong>Trim Left:</strong>
+	  <%= @page.left %>
+	</p>
+
+	<p>
+	  <strong>Trim Right:</strong>
+	  <%= @page.right %>
+	</p>
+
+	<p><%= link_to 'edit', edit_page_path(@page) %></p>
+</div>
+<div class="clr"></div>
+
+<br />
+<br />
+
+<div class="clr"></div>
+<% @assets = Asset.where("page_id = #{@page.id}")#.order("section.id ASC") %>
+<% @assets.each do |as| %>
+<div class="left">
+	<div class="leftcol">
+		<%= image_tag("#{as.url+as.filename}", width: "350px", border: "1px solid black") %>
+	</div>
+	<div class="rightcol">
+		<%= as.value  %>
+	</div>
+</div>
+<div class="clr"></div>
+<% end %>
+
+
+<%#= link_to 'Back', pages_path %>

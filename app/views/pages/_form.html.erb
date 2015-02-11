@@ -1,0 +1,80 @@
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Exclude<br>
+    <%= f.check_box :exclude %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :top %><br>
+    <%= f.number_field :top, :size => 4 %>
+    <br><br>
+  </div>
+  <div class="field">
+    <%= f.label :bottom %><br>
+    <%= f.number_field :bottom , :size => 4%>
+    <br><br>
+  </div>
+  <div class="field">
+    <%= f.label :left %><br>
+    <%= f.number_field :left, :size => 4 %>
+    <br><br>
+  </div>
+  <div class="field">
+    <%= f.label :right %><br>
+    <%= f.number_field :right, :size => 4 %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    Active  Template:<br>
+    <%= select("page", "template_id", ::Template.all.collect {|t| [ t.name, t.id ] },:include_blank => true, :disabled => !true) %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    OCR Language:<br>
+    <%= select("page", "language_id", ::Language.all.collect {|l| [ l.full, l.id ] }, :include_blank => true, :disabled => !true) %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    Enable Tyndal:<br>
+    <%= f.check_box :tyndale %>
+    <br/><br/>
+  </div>
+
+  <div class="field">
+    Primary Language:
+  </div>
+  <div class="field">
+    <%= select("page", "primary_language_id", ::Tyndale.all.collect {|t| [ t.full, t.id ] },:include_blank => true, :disabled => !true) %>
+    <br />
+    <br />
+  </div>
+  <div class="field">
+    Secondary Language:
+  </div>
+  <div class="field">
+  <%= select("page", "secondary_language_id", ::Language.all.collect {|t| [ t.full, t.id ] }, :include_blank => true, :disabled => !true) %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

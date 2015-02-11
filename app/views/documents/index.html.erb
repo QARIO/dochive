@@ -1,0 +1,63 @@
+<div class="right"><h1><%#= current_user.email[/[^@]+/] %><%= t('documents') %></h1></div>
+<br>
+<%= link_to t('adddoc'), new_document_path, :class=>'likeabutton' %>
+<div class="clr"></div>
+<hr />
+
+<script type='text/javascript'>
+$(function(){ $('#spinner').hide(); })
+function show()
+{
+$('#spinner').show();
+$('#spinner').hide();
+$('#spinner').show();
+}
+</script>
+  
+<% @documents.each do |document| %>
+
+<div class="sysfile">
+  
+  <div class="xleft">
+  	<div class="xleft"><%= link_to 'tmplt', "/documents/#{document.id}/templates", :class=>'likeabutton block' %></div>
+  	<div class="xleft"><%= link_to 'cnvrt', "/documents/#{document.id}/convert", :class=>'likeabutton block', :onclick => "return show();" %></div>
+  	<div class="xleft"><%= link_to 'del', document, method: :delete, :class=>'likeabutton block' , data: { confirm: 'Are you sure?' } %></div>
+  </div>
+  <br />
+
+    <div class="xleft">
+	  <%= 
+	    imagePath = "#{document.source.url}"
+
+	    replacements = [ ["/original/","/original/thumb/"], [".pdf","-0000_th.png"], [".zip","-0000_th.png"], [".zip","-0000_th.png"], [".zip","-0000_th.tiff"], [".jpg","-0000_th.png"], [".jpeg","-0000_th.png"], [".gif","-0000_th.png"] ]
+
+		replacements.each {|replacement| imagePath.gsub!(replacement[0], replacement[1])}
+
+		if document.phase_id<4 then 
+  			imagePath = "/assets/loading_th.png"
+		end
+
+	    link_to( image_tag(imagePath, border: 1), "/documents/#{document.id}/pages")
+	  %>
+  </div>
+  
+  <div class="xleft"> 
+	<div class="rlinks">
+	<% fileln = File.basename("#{document.source.url}".split("?")[0]).length %>	
+	<% if fileln < 32 then %>
+		<%= link_to File.basename("#{document.source.url}".split("?")[0]), document.source.url %></div>
+	<% else %>
+		<%= link_to File.basename("#{document.source.url}".split("?")[0])[0..18]+" ~.pdf", document.source.url %></div>
+	<% end %>
+    <div class="rdu">
+    	<%= t(Phase.find("#{document.phase_id}").name) %><%#= Phase.find("#{document.phase_id}").name %>
+    </div>
+	<div class="rlinks"><%#= document.updated_at %></div>
+  </div>
+  
+</div>
+
+<% end %>
+
+<div class="clr"></div>
+

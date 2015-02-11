@@ -1,0 +1,29 @@
+<div class="right"><h1><%= t('templates') %></h1></div>
+<div class="clr"></div>
+<hr />
+<br />
+
+<div class="clr"></div>
+
+<% @templates.each do |template| %>
+
+<div class="sysfile">
+
+	<div class="left rdu">
+		<%= template.updated_at %>
+	</div>
+
+	<%= link_to image_tag(template.url.gsub("/img5/","/thumb/")+template.filename.gsub(".png","_th.png"), :border => 1), template %>
+
+	<div class="xleft">
+		<div class="left">
+			<%= link_to t('delete'), template, method: :delete, :class=>'likeabutton block' , data: { confirm: 'Are you sure?' } %>
+		</div>
+	</div>
+	<div class="right pri"><%= template.name %></div>
+	
+</div>
+
+<% end %>
+
+<div class="clr"></div>

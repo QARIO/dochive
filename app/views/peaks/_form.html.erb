@@ -1,0 +1,37 @@
+<%= form_for(@peak) do |f| %>
+  <% if @peak.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@peak.errors.count, "error") %> prohibited this peak from being saved:</h2>
+
+      <ul>
+      <% @peak.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :page_id %><br>
+    <%= f.number_field :page_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dimension %><br>
+    <%= f.text_field :dimension %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :offset %><br>
+    <%= f.number_field :offset %>
+  </div>
+  <div class="field">
+    <%= f.label :intensity %><br>
+    <%= f.number_field :intensity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

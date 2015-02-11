@@ -1,0 +1,42 @@
+<p>
+  <strong>Document:</strong>
+  <%= @datum.document_id %>
+</p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @datum.template_id %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @datum.page_id %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @datum.path %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @datum.url %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @datum.filename %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @datum.description %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @datum.public %>
+</p>
+
+<%= link_to 'Edit', edit_datum_path(@datum) %> |
+<%= link_to 'Back', data_path %>

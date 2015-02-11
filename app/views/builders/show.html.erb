@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @builder.page_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @builder.name %>
+</p>
+
+<p>
+  <strong>Yorigin:</strong>
+  <%= @builder.yOrigin %>
+</p>
+
+<p>
+  <strong>Xorigin:</strong>
+  <%= @builder.xOrigin %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @builder.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @builder.height %>
+</p>
+
+<%= link_to 'Edit', edit_builder_path(@builder) %> |
+<%= link_to 'Back', builders_path %>

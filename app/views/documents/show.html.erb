@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<%=link_to( image_tag(@medium.gsub(".pdf","-0000_md.png")), @document.source.url) %>
+
+<p></p> 
+<p>
+ <a class="likeabutton" href="#">templates</a> 
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @document.description %>
+</p>
+
+<%= link_to 'Back', documents_path %> 

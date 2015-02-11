@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  document_id: 1
+  page_id: 1
+  section_id: 1
+  path: MyString
+  url: MyString
+  filename: MyString
+  tpath: MyString
+  turl: MyString
+  tfilename: MyString
+  language: MyString
+  value: MyString
+
+two:
+  document_id: 1
+  page_id: 1
+  section_id: 1
+  path: MyString
+  url: MyString
+  filename: MyString
+  tpath: MyString
+  turl: MyString
+  tfilename: MyString
+  language: MyString
+  value: MyString

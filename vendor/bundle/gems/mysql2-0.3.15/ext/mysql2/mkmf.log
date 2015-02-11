@@ -1,0 +1,249 @@
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -E -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/thread.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+conftest.c:5:57: warning: 'rb_thread_blocking_region' is deprecated [-Wdeprecated-declarations]
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+                                                        ^
+/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/intern.h:839:18: note: 'rb_thread_blocking_region' declared here
+DEPRECATED(VALUE rb_thread_blocking_region(rb_blocking_function_t *func, void *data1,
+                 ^
+/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0/ruby/config.h:92:52: note: expanded from macro 'DEPRECATED'
+#define DEPRECATED(x) __attribute__ ((deprecated)) x
+                                                   ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+conftest.c:5:57: error: use of undeclared identifier 'rb_wait_for_single_fd'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+conftest.c:5:15: warning: implicit declaration of function 'rb_wait_for_single_fd' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_wait_for_single_fd(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { rb_wait_for_single_fd(); return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+conftest.c:5:57: error: use of undeclared identifier 'rb_intern3'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'      -lruby-static  -lpthread -ldl -lobjc "
+conftest.c:5:15: warning: implicit declaration of function 'rb_intern3' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_intern3(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { rb_intern3(); return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_header: checking for mysql.h... -------------------- yes
+
+"clang -E -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.13/include -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+/* end */
+
+--------------------
+
+have_header: checking for errmsg.h... -------------------- yes
+
+"clang -E -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.13/include -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <errmsg.h>
+/* end */
+
+--------------------
+
+have_header: checking for mysqld_error.h... -------------------- yes
+
+"clang -E -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.13/include -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysqld_error.h>
+/* end */
+
+--------------------
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.13/include -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'     -L/usr/local/Cellar/mysql/5.6.13/lib -lmysqlclient  -lruby-static  -Wall -funroll-loops -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/x86_64-darwin12.5.0 -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0/ruby/backward -I/Users/Thuncan/.rbenv/versions/2.0.0-p247/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.13/include -I'/Users/Thuncan/.rbenv/versions/2.0.0-p247/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -Wall -funroll-loops conftest.c  -L. -L/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib -L. -L'/Users/Thuncan/.rbenv/versions/2.0.0-p247/lib'     -L/usr/local/Cellar/mysql/5.6.13/lib -lmysqlclient  -lruby-static  -Wl,-rpath,/usr/local/Cellar/mysql/5.6.13/lib -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full:</strong>
+  <%= @tyndale.full %>
+</p>
+
+<p>
+  <strong>Short:</strong>
+  <%= @tyndale.short %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @tyndale.enabled %>
+</p>
+
+<%= link_to 'Edit', edit_tyndale_path(@tyndale) %> |
+<%= link_to 'Back', tyndales_path %>

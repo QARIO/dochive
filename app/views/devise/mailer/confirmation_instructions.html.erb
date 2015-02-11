@@ -1,0 +1,20 @@
+<div class="lgnbdd">
+	
+	<div class="lgnctr">
+		<h2>Welcome <%= @email %>!</h2>
+	</div>
+    <div class="clr"></div>
+	
+	<div class="lgnctr">
+		<br />
+		You can confirm your account email through the link below:
+	</div>
+    <div class="clr"></div>
+	
+	<div class="lgnctr">
+		<br />
+		<%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %>
+	</div>
+    <div class="clr"></div>
+
+</div>

@@ -1,0 +1,73 @@
+<div class="right"><h1>my settings</h1></div>
+<br />
+<%= link_to 'home', "/", :class=>'likeabutton'  %> <%= link_to 'edit', edit_setting_path(@setting), :class=>'likeabutton'  %> 
+<div class="clr"></div>
+<hr />
+<div class="left">
+<div class="setfile h3">
+	<div class="wx">
+	  <strong>Trim Top:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.trimTop %>
+	  <br />
+	  <br />
+    </div>
+	<div class="wx">
+	  <strong>Trim Right:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.trimRight %>
+	  <br />
+	  <br />
+    </div>
+	<div class="wx">
+	  <strong>Trim Bottom:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.trimBottom %>
+	  <br />
+	  <br />
+    </div>
+	<div class="wx">
+	  <strong>Trim Left:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.trimLeft %>
+    </div>
+</div>
+<div class="setfile h3">
+	<div class="wz">
+	  <strong>Default Notification:</strong>
+	  <%= @setting.default_notification %>
+	  <br />
+	  <br />
+    </div>
+	<div class="wx">
+	   <strong>Notify On Completion:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.notify_complete %>
+    </div>
+</div>
+<div class="setfile h3">
+	<div class="wx">
+	   <strong>Default Template:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.default_template %>
+	  <br />
+	  <br />
+    </div>
+	<div class="wx">
+	   <strong>Default Language:</strong>
+    </div>
+	<div class="wy">
+	  <%= @setting.default_language %>
+    </div>
+</div>
+</div>
+
+<div class="clr"></div>
+
+<br />

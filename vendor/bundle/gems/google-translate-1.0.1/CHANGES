@@ -1,0 +1,68 @@
+
+= Google-Translate Changelog
+
+== Version 0.5.5
+
+* Initial release.
+
+== Version 0.5.6
+
+* Adding support for ruby 1.9.x
+
+== Version 0.5.7
+
+* Removing text duplication from help
+
+== Version 0.5.8
+
+* Merging changes from bragi: removing warnings, adding exceptions
+
+== Version 0.5.9
+
+* Adding alias: "t" for "translate" command
+
+== Version 0.6.1
+
+* Adding error handling
+
+== Version 0.6.2
+
+* Reflecting changes in how google returns supported languages list
+
+== Version 0.6.7
+
+* Deploy on gemcutter
+
+== Version 0.7.0
+
+* Fix changes in detect languages service
+
+== Version 0.7.1
+
+* Ruby 1.9.2 ready
+
+== Version 0.8.5
+
+* Stop using translate API, start using scraping google translate
+
+== Version 0.8.6
+
+* Fix auto detect source language; fix countries list; refactoring code
+
+== Version 0.8.7
+
+* Changes in project configuration
+
+== Version 0.8.8
+
+* Adding version to gemspec.
+
+== Version 1.0.0
+
+* Adding speech flag.
+
+* Adding synonyms.
+
+== Version 1.0.1
+
+* Bug fixes

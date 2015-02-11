@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @marker.template_id %>
+</p>
+
+<p>
+  <strong>Dimension:</strong>
+  <%= @marker.dimension %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @marker.number %>
+</p>
+
+<p>
+  <strong>Offset:</strong>
+  <%= @marker.offset %>
+</p>
+
+<p>
+  <strong>Intensity:</strong>
+  <%= @marker.intensity %>
+</p>
+
+<%= link_to 'Edit', edit_marker_path(@marker) %> |
+<%= link_to 'Back', markers_path %>

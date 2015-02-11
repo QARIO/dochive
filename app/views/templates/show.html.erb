@@ -1,0 +1,26 @@
+<div class="right"><h1><%= @template.name %> * template details</h1></div>
+<br>
+<div class="xleft"><%= link_to "return to templates", templates_path, :class=>'likeabutton' %></div>
+<div class="clr"></div>
+<hr />
+
+<p id="notice"><%= notice %></p>
+
+<% var = "border:1px solid #d3d3d3; float: left; background-image: url(http://localhost:3000#{@template.url}".gsub("/original/img5/","/original/xlarge/")+
+"#{@template.filename}".gsub(".png","_xlg.png")  %>
+
+<canvas id="showcanvas" width="925" height="1230" style="<%= var %>">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<div class="clr"></div>
+
+  <script>
+    var c=document.getElementById("showcanvas");
+    var ctx=c.getContext("2d");
+<% @sections = Section.where("template_id = #{@template.id}")#.order("section.id ASC") %>
+<% @sections.each do |st| %>
+    ctx.strokeRect(<%=st.xOriginView%>,<%=st.yOriginView%>,<%=st.widthView%>,<%=st.heightView%>);
+<% end %>
+  </script>
+  
+<div class="clr"></div>

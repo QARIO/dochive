@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc&#9187;hive</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+	<%# <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script> %>
+	<%#= <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> %>
+    <%# <script src="http://canjs.com/release/1.1.7/can.jquery.js"></script> %>
+	<%#= javascript_include_tag "jquery.min.js" %>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<%= javascript_include_tag "jquery-1.9.1.min.js" %>
+	<%= javascript_include_tag "can.jquery.js" %>
+</head>
+<body>
+
+	<div class="once-ler">
+		<div class="centered">
+
+			<div class="dochive">
+				<a href="/">
+					<img alt="docHive" src="/assets/dochive-logo-3.png" width="80%">
+				</a>
+			</div>
+
+			<div class="quiknav">
+				<div class="squares">
+					<ul>
+						<li>
+							<% if (controller.controller_name=='hive' and controller.action_name=='overview') %> 
+							<a class="e1" href="/hive/overview"></a>   
+							<% else %>
+							<a class="d1" href="/hive/overview"></a> 
+							<% end %>  
+						</li>
+						<li>
+							<% if (controller.controller_name=='hive' and controller.action_name=='public') %> 
+							<a class="e-1" href="#"></a>   
+							<% else %>
+							<a class="d-1" href="#"></a> 
+							<% end %> 			  
+						</li>
+						<li>
+							<% if (controller.controller_name=='hive' and controller.action_name=='tutorials') %> 
+							<a class="e-1" href="#"></a>   
+							<% else %>
+							<a class="d-1" href="#"></a> 
+							<% end %> 			
+						</li>
+						<li>
+							<% if (controller.controller_name=='documents') %> 
+							<a class="e1" href="/documents"></a>   
+							<% else %>
+							<a class="d1" href="/documents"></a> 
+							<% end %> 
+						</li>
+						<li>
+							<% if (controller.controller_name=='templates') %> 
+							<a class="e1" href="/templates"></a>   
+							<% else %>
+							<a class="d1" href="/templates"></a> 
+							<% end %> 
+						</li>
+						<li>
+							<% if (controller.controller_name=='data') %> 
+							<a class="e1" href="/data"></a>   
+							<% else %>
+							<a class="d1" href="/data"></a> 
+							<% end %> 
+						</li>
+						<li>
+							<% if (controller.controller_name=='hive' and controller.action_name=='queue') %> 
+							<a class="e-1" href="#"></a>   
+							<% else %>
+							<a class="d-1" href="#"></a> 
+							<% end %> 
+						</li>
+						<li>
+							<% if (controller.controller_name=='hive' and controller.action_name=='analysis') %> 
+							<a class="e-1" href="#"></a>   
+							<% else %>
+							<a class="d-1" href="#"></a> 
+							<% end %> 
+						</li>
+						<li>
+							<% if (controller.controller_name=='settings') %> 
+							<a class="e1" href="/settings/0/edit"></a>   
+							<% else %>
+							<a class="d1" href="/settings/0/edit"></a> 
+							<% end %> 
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="navele">
+				<% if !(controller.controller_name=='hive' and controller.action_name=='index') %> 
+				<div class="login"><a href="/"><img alt="Logout" width="24" src="/assets/homeoff.png"></a></div>   
+				<% else %>
+				<div class="login"><a href="/"><img alt="Login" width="24" src="/assets/homeon.png"></a></div> 
+				<% end %>  
+			</div>
+
+			<div class="navele">
+				<% if user_signed_in? %>
+				<div class="login">
+					<%= link_to image_tag("/assets/poweroff.png", :border => 0, :width => 24), destroy_user_session_path, :method => :delete %> 
+				</div> 
+				<% else %>
+				<div class="login">
+					<%= link_to image_tag("/assets/poweron.png", :border => 0, :width => 24), new_user_session_path %> 
+				</div> 
+				<% end %>   
+			</div>
+
+			<div class="navele-flags">
+				<div class="flags"><a href="?locale=en"><img alt="us" src="/assets/flags/us.png"></a></div>
+				<div class="flags"><a href="?locale=es"><img alt="es" src="/assets/flags/es.png"></a></div>
+				<div class="flags"><a href="?locale=fr"><img alt="fr" src="/assets/flags/fr.png"></a></div>
+				<div class="flags"><a href="?locale=de"><img alt="de" src="/assets/flags/de.png"></a></div>
+				<div class="flags"><a href="?locale=sv"><img alt="se" src="/assets/flags/se.png"></a></div>
+				<div class="flags"><a href="?locale=ar"><img alt="ae" src="/assets/flags/ae.png"></a></div>
+				<div class="flags"><a href="?locale=pt"><img alt="pt" src="/assets/flags/pt.png"></a></div>
+				<div class="flags"><a href="?locale=nl"><img alt="nl" src="/assets/flags/nl.png"></a></div>
+				<div class="flags"><a href="?locale=ru"><img alt="ru" src="/assets/flags/ru.png"></a></div>
+				<div class="flags"><a href="?locale=fa"><img alt="ir" src="/assets/flags/ir.png"></a></div>
+				<div class="clr"></div>
+			</div>
+
+			<div class="clr"></div>
+		</div>
+	</div>
+
+	<div class="centered">
+
+		<div id="outerhive">
+			<%= yield %>
+		</div>
+
+		<hr class="hrs">
+		<div class="xleft">
+			<p class="alert"><%= alert %></p>
+		</div>
+		<div class="xleft">
+			<p class="notice"><%= notice %></p>
+		</div>
+		<div id="footer">
+			<a href="http://qar.io/"><img src="/assets/queenannescript.png" ></a>
+
+			<div class="meater">
+				<span style="width: 10%"></span>
+			</div>
+
+		</div>
+
+	</body>
+	</html>

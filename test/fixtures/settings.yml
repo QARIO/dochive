@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  default_template: 1
+  default_language: 1
+  default_notification: MyString
+  notify_complete: false
+  trimLeft: 1
+  trimRight: 1
+  trimTop: 1
+  trimBottom: 1
+
+two:
+  user_id: 1
+  default_template: 1
+  default_language: 1
+  default_notification: MyString
+  notify_complete: false
+  trimLeft: 1
+  trimRight: 1
+  trimTop: 1
+  trimBottom: 1

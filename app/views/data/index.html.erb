@@ -1,0 +1,46 @@
+<div class="right"><h1><%= t('data') %></h1></div>
+<div class="clr"></div>
+<hr />
+<br />
+
+<div class="clr"></div>
+
+<% @data.each do |datum| %>
+
+	<% @document = Document.find(datum.document_id) %>
+
+	<div class="expfile">
+
+		<div class="left rdu">
+			<a href="<%= datum.url %><%= datum.filename %>"><%= datum.filename %></a>
+		</div>
+		<br>
+
+		<%= link_to image_tag("/assets/scroll-128.png", :border => 1), datum.url + datum.filename %>
+		<br>
+		<div class="xleft">
+			<div class="left">
+				<%= link_to t('delete'), datum, method: :delete, :class=>'likeabutton block' , data: { confirm: 'Are you sure?' } %>
+			</div>
+		</div>
+		<div class="right pri"><%#= datum.name %></div>
+		
+	</div>
+
+<% end %>
+
+<div class="clr"></div>
+
+<div class="mcenter">
+
+<% @remainder = Document.where("phase_id = '5'") %>
+<% @remainder.each do |rem| %>
+
+	<img alt="docHive" src="/assets/kit.gif">
+
+<% end %>
+
+</div>
+
+<div class="clr"></div>
+

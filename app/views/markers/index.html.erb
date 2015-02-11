@@ -1,0 +1,35 @@
+<h1>Listing markers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Template</th>
+      <th>Dimension</th>
+      <th>Number</th>
+      <th>Offset</th>
+      <th>Intensity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @markers.each do |marker| %>
+      <tr>
+        <td><%= marker.template_id %></td>
+        <td><%= marker.dimension %></td>
+        <td><%= marker.number %></td>
+        <td><%= marker.offset %></td>
+        <td><%= marker.intensity %></td>
+        <td><%= link_to 'Show', marker %></td>
+        <td><%= link_to 'Edit', edit_marker_path(marker) %></td>
+        <td><%= link_to 'Destroy', marker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Marker', new_marker_path %>

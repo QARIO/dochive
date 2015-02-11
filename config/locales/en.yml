@@ -1,0 +1,51 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  overview: "Overview"
+  files: "Files"
+  templates: "Templates"
+  data: "Data"
+  settings: "Settings"
+  documents: "Documents"
+  simple: "Simple"
+  simple_description: "DocHive uses a template system to pull structured data from flat image files. Think of a scanned PDF of a government form, DocHive allows you to create a template and extract the data from that form into a spreadsheet."
+  automation: "Effortless Automation"
+  automation_description: "Effortless Automation"
+  analysis: "Ready for Analysis"
+  analysis_description: "Ready for Analysis"
+  uploaded: "uploaded"
+  preprocessing: "preprocessing"
+  reprocessing: "reprocessing"
+  ready: "ready"
+  extracting: "extracting"
+  extracted: "ready / extracted"
+  adddoc: "add document"
+  delete: "delete"
+  edit: "edit"
+  show: "show"
+  back: "back"
+  show: "show"
+  returntodocs: "return 2 documents"
+  pageconvert: "convert"
+  exclude: "exclude"
+  shorttemplate: "template"
+

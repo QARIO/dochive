@@ -1,0 +1,37 @@
+<h1>Listing sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Template</th>
+      <th>Name</th>
+      <th>Yorigin</th>
+      <th>Xorigin</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.template_id %></td>
+        <td><%= section.name %></td>
+        <td><%= section.yOrigin %></td>
+        <td><%= section.xOrigin %></td>
+        <td><%= section.width %></td>
+        <td><%= section.height %></td>
+        <td><%= link_to 'Show', section %></td>
+        <td><%= link_to 'Edit', edit_section_path(section) %></td>
+        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', new_section_path %>

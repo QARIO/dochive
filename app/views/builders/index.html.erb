@@ -1,0 +1,37 @@
+<h1>Listing builders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Name</th>
+      <th>Yorigin</th>
+      <th>Xorigin</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @builders.each do |builder| %>
+      <tr>
+        <td><%= builder.page_id %></td>
+        <td><%= builder.name %></td>
+        <td><%= builder.yOrigin %></td>
+        <td><%= builder.xOrigin %></td>
+        <td><%= builder.width %></td>
+        <td><%= builder.height %></td>
+        <td><%= link_to 'Show', builder %></td>
+        <td><%= link_to 'Edit', edit_builder_path(builder) %></td>
+        <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Builder', new_builder_path %>

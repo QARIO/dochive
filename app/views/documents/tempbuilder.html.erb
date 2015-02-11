@@ -1,0 +1,269 @@
+<div class="right"><h1>start a new template</h1></div>
+<br>
+<%= link_to 'return to documents', documents_path, :class=>'likeabutton' %>
+<div class="clr"></div>
+<hr />
+
+<% @page = Page.where("id = #{params[:id]}").first %>
+
+<a href="#" id="<%= params[:id] %>" class="inputclear likeabutton">clear</a>  
+<a href="/documents/<%= @page.document_id %>/pages" id="<%= params[:id] %>" class="nametemplate likeabutton">save as template</a>
+<a href="/documents/<%= @page.document_id %>/pages" id="<%= params[:id] %>" class="selfie likeabutton">selfie</a>
+
+<br />
+<br />
+
+<% var = "background-image: url(#{@page.url}".gsub("/original/img5/","/original/xlarge/")+
+"#{@page.filename}".gsub(".png","_xlg.png); "+
+"width: 925px; height: 1230px;") %>
+
+<div id="canvas" style="<%= var %>"></div>
+
+  <script type='text/javascript'>
+
+  $('.inputclear').click(function() {
+  $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/clearbuilder/",
+      data: { id: this.id }
+   });     
+  });
+
+  $('._inputsave').click(function() {
+  $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/clearbuilder/",
+      data: { id: this.id }
+   });     
+  });
+
+  $('.nametemplate').click(function() {
+    var thing=prompt("Template name");
+  $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/nametemplate/",
+      data: { id: this.id , name: thing }
+   });     
+  });
+
+  $('.selfie').click(function() {
+    //var thing=prompt("Template name");
+  $.ajax({
+      type: "POST",
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      url: "/documents/selfie/",
+      data: { id: this.id , name: "selfie" }
+   });     
+  });
+
+  </script>
+
+<script>
+
+
+var Paper = can.Control(
+    {
+        defaults: {
+            rect: {
+                minWidth: 10,
+                minHeight: 10
+            }
+        }
+    },
+    {
+        /**
+         * Initialize
+         */
+        init: function() {
+
+            // Bind event handlers
+            this.element.on('mousedown.paper', $.proxy(this.startDrawRect, this));
+        },
+
+        /**
+         * Start drawing a rectangle
+         *
+         * @param   e
+         */
+        startDrawRect: function(e) {
+
+            // Get canvas offset
+            var offset = this.element.offset();
+            this.canvasOffsetLeft = offset.left;
+            this.canvasOffsetTop = offset.top;
+
+            // Save start positions
+            this.drawStartX = e.pageX - this.canvasOffsetLeft;
+            this.drawStartY = e.pageY - this.canvasOffsetTop;
+
+            // Create the rectangle
+            this.drawingRect = this.createRect(this.drawStartX, this.drawStartY, 0, 0);
+
+            // Bind event handlers
+            this.element.on('mousemove.paper', $.proxy(this.drawRect, this));
+            this.element.on('mouseup.paper', $.proxy(this.endDrawRect, this));
+        },
+
+        /**
+         * Draw the rectangle
+         *
+         * @param   e
+         */
+        drawRect: function(e) {
+
+            var currentX = e.pageX - this.canvasOffsetLeft;
+            var currentY = e.pageY - this.canvasOffsetTop;
+
+            // Calculate the position and size of the rectangle we are drawing
+            var position = this.calculateRectPos(this.drawStartX, this.drawStartY, currentX, currentY);
+
+            // Set position and size
+            this.drawingRect.css(position);
+        },
+
+        /**
+         * Finish drawing the rectangle
+         *
+         * @param   e
+         */
+        endDrawRect: function(e) {
+
+            var currentX = e.pageX - this.canvasOffsetLeft;
+            var currentY = e.pageY - this.canvasOffsetTop;
+
+            // Calculate the position and size of the rectangle we are drawing
+            var position = this.calculateRectPos(this.drawStartX, this.drawStartY, currentX, currentY);
+
+            if (position.width < this.options.rect.minWidth || position.height < this.options.rect.minHeight) {
+
+                // The drawn rectangle is too small, remove it
+                this.drawingRect.remove();
+            }
+            else {
+
+                // Set position and size
+                this.drawingRect.css(position);
+
+                // The rectangle is big enough, select it
+                this.selectRect(this.drawingRect);
+				//alert("w: "+position.width+", h:"+position.height+", x:"+currentX+", y:"+currentY);
+            }
+
+            // Unbind event handlers
+            this.element.off('mousemove.paper');
+            this.element.off('mouseup.paper');
+			
+			var x;
+			
+			var thing=prompt("Please enter a field name\n[yOrigin: "+Math.round(this.drawStartY)+", xOrigin:"+Math.round(this.drawStartX)+", width:"+Math.round(currentX-this.drawStartX)+", height:"+Math.round(currentY-this.drawStartY)+"]","something");
+
+			//var r=confirm(thing+" => yOrigin: "+Math.round(this.drawStartY)+", xOrigin:"+Math.round(this.drawStartX)+", width:"+Math.round(currentX-this.drawStartX)+", height:"+Math.round(currentY-this.drawStartY));
+
+			if (thing!="")
+			{
+			  x="You pressed OK!";
+
+              $.ajax({
+                type: "POST",
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                },
+                url: "/documents/addsection/",
+                data: { name: thing, page_id: <%= @page.id %>, xOrigin: this.drawStartX, yOrigin: this.drawStartY, width: (currentX-this.drawStartX), height: (currentY-this.drawStartY) }
+              });
+            
+                //document.location.href = "index"
+			}
+			else
+			{
+			  x="You pressed Cancel!";
+			} 	  
+        },
+
+        /**
+         * Create a rectangle
+         *
+         * @param   x
+         * @param   y
+         * @param   w
+         * @param   h
+         */
+        createRect: function(x, y, w, h) {
+
+            return $('<div/>').addClass('rect').css({
+                left: x,
+                top: y,
+                width: w,
+                height: h
+            }).appendTo(this.element);
+        },
+
+        /**
+         * Select the given rectangle
+         *
+         * @param   rect
+         */
+        selectRect: function(rect) {
+
+            // Deselect the previous selected rectangle
+            this.selectedRect && this.selectedRect.removeClass('selected');
+
+            // Select the given rectangle
+            this.selectedRect = rect;
+            this.selectedRect.addClass('selected');
+        },
+
+        /**
+         * Calculate the start position and size of the rectangle by the mouse coordinates
+         *
+         * @param   startX
+         * @param   startY
+         * @param   endX
+         * @param   endY
+         * @returns {*}
+         */
+        calculateRectPos: function(startX, startY, endX, endY) {
+
+            var width = endX - startX;
+            var height = endY - startY;
+            var posX = startX;
+            var posY = startY;
+
+            if (width < 0) {
+                width = Math.abs(width);
+                posX -= width;
+            }
+
+            if (height < 0) {
+                height = Math.abs(height);
+                posY -= height;
+            }
+
+            return {
+                left: posX,
+                top: posY,
+                width: width,
+                height: height
+            };
+        }
+    }
+);
+
+$(function() {
+    var paper = new Paper('#canvas', {});
+});
+</script>
+
+
+<p id="demo"></p>

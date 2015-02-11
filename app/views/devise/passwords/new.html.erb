@@ -1,0 +1,34 @@
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+<div class="lgnbdd">
+	
+	<div class="lgnctr">
+		<h2>Forgot your password?</h2>
+		<br />
+		<%= devise_error_messages! %>
+	</div>
+    <div class="clr"></div>
+	
+	<div class="lgnctr">
+		<br />
+		email<br />
+		  <%= f.email_field :email, :autofocus => true %>
+	</div>
+    <div class="clr"></div>
+	
+
+	<div class="lgnctr">
+		<%= f.submit "Send me reset password instructions" %>
+	</div>
+    <div class="clr"></div>
+	
+	<div class="lgnctr">
+		<br />
+		~ 
+		<br />
+		<br />
+		<%= render "devise/shared/links" %>
+	</div>
+    <div class="clr"></div>
+
+</div>
+<% end %>

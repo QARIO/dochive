@@ -1,0 +1,142 @@
+<%= form_for(@setting) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <script language="javascript">
+    function enableDisable(bEnable, textBoxID)
+    {
+         document.getElementById(textBoxID).disabled = !bEnable
+    }
+    function toggleAll(name)
+    {
+      boxes = document.getElementsByClassName(name);
+      for (i = 0; i < boxes.length; i++)
+        if (!boxes[i].disabled)
+          { boxes[i].checked = !boxes[i].checked ; }
+    }
+    function setAll(name,state)
+    {
+      boxes = document.getElementsByClassName(name);
+      for (i = 0; i < boxes.length; i++)
+        if (!boxes[i].disabled)
+          { boxes[i].checked = state ; }
+    }
+  </script>
+    
+
+  <div class="left">
+  <div class="setfile h3">
+  	<div class="wx">
+  	  <strong>Trim Top:</strong>
+      </div>
+  	<div class="wy">
+      <input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'tritop')"><%= f.number_field :trimTop, :id => 'tritop', :size=>'4', :disabled => true %>
+  	  <br />
+  	  <br />
+      </div>
+  	<div class="wx">
+  	  <strong>Trim Right:</strong>
+    </div>
+  	<div class="wy">
+      <input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'tririt')">
+  	  <%= f.number_field :trimRight, :id => 'tririt', :size=>'4', :disabled => true %>
+  	  <br />
+  	  <br />
+      </div>
+  	<div class="wx">
+  	  <strong>Trim Bottom:</strong>
+    </div>
+  	<div class="wy">
+      <input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'tribot')">
+  	  <%= f.number_field :trimBottom, :id => 'tribot', :size=>'4', :disabled => true %>
+  	  <br />
+  	  <br />
+      </div>
+  	<div class="wx">
+  	  <strong>Trim Left:</strong>
+    </div>
+  	<div class="wy">
+      <input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'trilef')">
+  	  <%= f.number_field :trimLeft, :id => 'trilef', :size=>'4', :disabled => true %>
+    </div>
+  </div>
+  <div class="setfile h3">
+  	<div class="wx">
+  	  <strong>Default Notification:</strong>
+      <br/><input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'defnot')">
+	  <%= f.number_field :default_notification, :id => 'defnot', :disabled => true %>
+  	  <br />
+  	  <br />
+    </div>
+  	<div class="wx">
+  	   <strong>Notify On Completion:</strong>
+    </div>
+  	<div class="wy">
+      <%= f.check_box :notify_complete, :id => 'notcom'%> Allow Notifications<br/><br/>
+    </div>
+
+
+    <div class="wx">
+       <strong>Default Template:</strong>
+    </div>
+    <div class="wx">
+    <%= select("setting", "default_template", ::Template.all.collect {|t| [ t.name, t.id ] },:include_blank => true, :disabled => !true) %>
+      <br />
+      <br />
+    </div>
+    <div class="wx">
+       <strong>Default Language:</strong>
+    </div>
+    <div class="wx">
+    <%= select("setting", "default_language", ::Language.all.collect {|l| [ l.full, l.id ] }, :include_blank => true, :disabled => !true) %>
+    </div>
+
+  </div>
+  <div class="setfile h3">
+  	
+    <!--<div class="wx">
+       <strong>Enable Tyndal Translation:</strong>
+    </div>
+    <div class="wy">-->
+      <%#= f.check_box :tyndale %>
+      <!--<br/><br/>
+    </div>
+
+    <div class="wx">
+      <strong>Google Translate API Key:</strong>
+      <input type="checkbox" id="checkBox" onclick="enableDisable(this.checked, 'traapi')">-->
+      <%#= f.number_field :translate_api, :id => 'traapi', :disabled => true %>
+      <!--<br />
+      <br />
+    </div>
+
+    <div class="wx">
+       <strong>Primary Language:</strong>
+    </div>
+    <div class="wx">-->
+    <%#= select("setting", "primary_language_id", ::Tyndale.all.collect {|t| [ t.full, t.id ] },:include_blank => true, :disabled => !true) %>
+      <!--<br />
+      <br />
+    </div>
+    <div class="wx">
+       <strong>Secondary Language:</strong>
+    </div>
+    <div class="wx">-->
+    <%#= select("setting", "secondary_language_id", ::Tyndale.all.collect {|t| [ t.full, t.id ] }, :include_blank => true, :disabled => !true) %>
+    <!--</div>-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

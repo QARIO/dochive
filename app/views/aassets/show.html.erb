@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @asset.page_id %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @asset.section_id %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @asset.path %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @asset.url %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @asset.filename %>
+</p>
+
+<p>
+  <strong>Tpath:</strong>
+  <%= @asset.tpath %>
+</p>
+
+<p>
+  <strong>Turl:</strong>
+  <%= @asset.turl %>
+</p>
+
+<p>
+  <strong>Tfilename:</strong>
+  <%= @asset.tfilename %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @asset.language %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @asset.value %>
+</p>
+
+<%= link_to 'Edit', edit_asset_path(@asset) %> |
+<%= link_to 'Back', assets_path %>

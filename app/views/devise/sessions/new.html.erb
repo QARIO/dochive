@@ -1,0 +1,29 @@
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<div class="lgnbdd">
+	<div class="lgnctr">
+		<h2>Sign in</h2>
+		<br />
+	</div>
+    <div class="clr"></div>
+	<div class="lgnctr">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email<div class="x30"></div>password
+	</div>
+    <div class="clr"></div>
+	<div class="lgnctr">
+		<%= f.email_field :email, :autofocus => true %><div class="x30"></div><%= f.password_field :password %>
+	</div>
+    <div class="clr"></div>
+	<div class="lgnctr">
+		<br />
+		<br />
+		<%= f.submit "Sign in" %>
+	</div>
+	<div class="lgnft">
+		<br />
+		~ 
+		<br />
+		<br />
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
+<% end %>

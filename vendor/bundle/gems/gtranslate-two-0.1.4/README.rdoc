@@ -1,0 +1,118 @@
+= gtranslate-two
+
+This is a simple Ruby gem designed to use Google Translate API v2 - unlike other gems which use the first version of the API.
+
+Also unlike other available gems, this one requires the use of an API key, which you can get from the {Google APIs console}[https://code.google.com/apis/console/].
+
+== Usage
+
+=== First, require the gem
+  require 'gtranslate-two'
+
+=== Second, set your API key
+  GTranslator.key = 'YOUR_GOOGLE_TRANSLATE_KEY'
+
+=== Example - translation with known language
+Now, let's try translating something from English to Icelandic
+
+  GTranslator.translate('Hello world', GLanguage::Icelandic, GLanguage::English)
+  
+The result (in irb console) should look something like this:
+  <GTranslatorResult:0x1013e8558 @original="Hello world", @source="en", @translation="Hall\303\263 heimur", @target="is">
+  
+As you can see, the result is a GTranslatorResult object with properties:
+* original (the original query)
+* source (source language)
+* translation (translated query)
+* target (target language)
+
+=== Example - translation without known language
+The gem also supports Google Translate language detection mechanism. Let's imagine we did not know the source language but still wanted to translate the phrase to, say, Irish.
+
+To do that, we'll basically leave out the third argument in the translate method, falling back on automatic language detection:
+
+  GTranslator.translate('Hello world', GLanguage::Irish)
+
+The result (in irb console) should look somewhat like this:
+
+  #<GTranslatorResult:0x1013dced8 @original="Hello world", @source="en", @translation="Dia duit ar domhan", @target="ga">
+  
+As you can see, the result is a GTranslatorResult object with the same set of properties, only this time the source is determined automatically.
+
+=== Example - simple language detection
+Last but not least the gem supports language detection operation (without translation)
+
+  GTranslator.detect_language('Mam na imie Marcin')
+  
+The result should be "pl"
+
+The gem supports all languages supported by Google Translate API. They are implemented in the GLanguage module as constants:
+
+  GLanguage::Afrikaans	= 'af'
+  GLanguage::Albanian = 'sq'
+  GLanguage::Arabic = 'ar'
+  GLanguage::Belarusian = 'be'
+  GLanguage::Bulgarian	= 'bg'
+  GLanguage::Catalan	= 'ca'
+  GLanguage::Chinese_Simplified = 'zh-CN'
+  GLanguage::Chinese_Traditional	= 'zh-TW'
+  GLanguage::Croatian = 'hr'
+  GLanguage::Czech	= 'cs'
+  GLanguage::Danish = 'da'
+  GLanguage::Dutch	= 'nl'
+  GLanguage::English	= 'en'
+  GLanguage::Estonian = 'et'
+  GLanguage::Filipino = 'tl'
+  GLanguage::Finnish = 'fi'
+  GLanguage::French = 'fr'
+  GLanguage::Galician = 'gl'
+  GLanguage::German = 'de'
+  GLanguage::Greek	= 'el'
+  GLanguage::Haitian_Creole = 'ht'
+  GLanguage::Hebrew = 'iw'
+  GLanguage::Hindi	= 'hi'
+  GLanguage::Hungarian	= 'hu'
+  GLanguage::Icelandic	= 'is'
+  GLanguage::Indonesian = 'id'
+  GLanguage::Irish	= 'ga'
+  GLanguage::Italian	= 'it'
+  GLanguage::Japanese = 'ja'
+  GLanguage::Latvian = 'lv'
+  GLanguage::Lithuanian = 'lt'
+  GLanguage::Macedonian = 'mk'
+  GLanguage::Malay = 'ms'
+  GLanguage::Maltese	= 'mt'
+  GLanguage::Norwegian = 'no'
+  GLanguage::Persian = 'fa'
+  GLanguage::Polish = 'pl'
+  GLanguage::Portuguese = 'pt'
+  GLanguage::Romanian = 'ro'
+  GLanguage::Russian = 'ru'
+  GLanguage::Serbian	= 'sr'
+  GLanguage::Slovak = 'sk'
+  GLanguage::Slovenian = 'sl'
+  GLanguage::Spanish	= 'es'
+  GLanguage::Swahili	= 'sw'
+  GLanguage::Swedish	= 'sv'
+  GLanguage::Thai = 'th'
+  GLanguage::Turkish	= 'tr'
+  GLanguage::Ukrainian	= 'uk'
+  GLanguage::Vietnamese = 'vi'
+  GLanguage::Welsh = 'cy'
+  GLanguage::Yiddish = 'yi'
+
+== Contributing to gtranslate-two
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2011 Marcin Wyszynski. See LICENSE.txt for
+further details.
+

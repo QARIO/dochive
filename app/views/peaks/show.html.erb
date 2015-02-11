@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @peak.page_id %>
+</p>
+
+<p>
+  <strong>Dimension:</strong>
+  <%= @peak.dimension %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @peak.number %>
+</p>
+
+<p>
+  <strong>Offset:</strong>
+  <%= @peak.offset %>
+</p>
+
+<p>
+  <strong>Intensity:</strong>
+  <%= @peak.intensity %>
+</p>
+
+<%= link_to 'Edit', edit_peak_path(@peak) %> |
+<%= link_to 'Back', peaks_path %>

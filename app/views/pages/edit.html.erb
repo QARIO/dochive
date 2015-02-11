@@ -1,0 +1,129 @@
+<div class="right"><h1>page details</h1></div>
+<br>
+<div class="xleft"><%= link_to "return to pages", "/documents/#{@page.document_id}/pages", :class=>'likeabutton' %></div>
+<div class="xleft"><%#= link_to "reprocess", "/documents/#{params[:id]}/repage", :class=>'likeabutton' %></div>
+<div class="xleft"><%= link_to "open template builder", "/documents/#{params[:id]}/tempbuilder", :class=>'likeabutton' %><%#= link_to "open template builder", "/documents/#{params[:id]}/repage", :class=>'likeabutton' %></div>
+<div class="clr"></div>
+<hr />
+
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mods">
+    <div class="field">
+      <%= f.check_box :exclude %> <%= t('exclude') %>
+    </div>
+  </div> 
+  <!--
+  <div class="mods">
+     <div class="field">
+      <%#= f.label :top %>
+      <%#= f.number_field :top, :size => 4 %>
+      <%#= f.label :bottom %>
+      <%#= f.number_field :bottom , :size => 4%>
+      <%#= f.label :left %>
+      <%#= f.number_field :left, :size => 4 %>
+      <%#= f.label :right %>
+      <%#= f.number_field :right, :size => 4 %>
+    </div>
+  </div>
+-->
+  <div class="mods">
+    <div class="field">
+      OCR Language: 
+      <%= select("page", "language_id", ::Language.all.collect {|l| [ l.full, l.id ] }, :include_blank => true) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Active  Template: 
+      <%= select("page", "template_id", ::Template.where("name <> ? or id=?", "selfie", @page.template_id).collect {|t| [ t.name, t.id ] },:include_blank => true) %>
+      <%#= f.label "Template X" %>
+      <%#= f.number_field :templatex, :size => 4 %
+      <br>
+      <%#= f.label "Template Y" %>
+      <%#= f.number_field :templatey, :size => 4 %>
+    </div>
+  </div> 
+
+  <!--<div class="mods">
+    <div class="field">
+      Enable Tyndal: -->
+      <%#= f.check_box :tyndale %>
+      <!--<br>
+      Primary Language:-->
+      <%#= select("page", "primary_language_id", ::Tyndale.all.collect {|t| [ t.full, t.id ] },:include_blank => true) %>
+      <!--<br />
+      Secondary Language:-->
+      <%#= select("page", "secondary_language_id", ::Language.all.collect {|t| [ t.full, t.id ] }, :include_blank => true) %>
+    <!--</div>
+  </div> -->
+
+  <div class="mods">
+    <div class="actions">
+      <%= f.submit %>
+    <%= link_to 'Cancel', "/documents/", :class=>"likeabutton" %>
+    </div>
+  </div> 
+
+<% end %>
+
+<div class="clr"></div>
+<hr>
+
+<br />
+
+
+
+
+
+<div class="xleft">
+<% var = @page.path.gsub("/original/img5/","/original/large/")+"#{@page.filename}".gsub(".png","_lgx.png") %>
+<% if File.exists?(var) then %>
+	<%#= link_to( image_tag(var), "/pages/#{@page.id}")  %>
+  <%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/large/")+"#{@page.filename}".gsub(".png","_lgx.png")), "/documents/#{@page.id}/tempbuilder")  %>
+<% else %>
+	<%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/large/")+"#{@page.filename}".gsub(".png","_lg.png")), "/documents/#{@page.id}/tempbuilder")  %>
+<% end %>
+</div>
+
+<div class="clr"></div>
+<br />
+<hr>
+<br />
+
+<div class="clr"></div>
+
+<%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/intensity/")+"#{@page.filename}".gsub(".png","")+"-B.png", :alt => "image", :width => 450, :height => 100, :border => 1), "/documents/#{@page.id}/tempbuilder")  %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to( image_tag("#{@page.url}".gsub("/original/img5/","/original/intensity/")+"#{@page.filename}".gsub(".png","")+"-D.png", :alt => "image", :width => 450, :height => 100, :border => 1), "/documents/#{@page.id}/tempbuilder")  %>
+
+<%# end %>
+
+
+<br />
+<hr>
+<br />
+<div class="clr"></div>
+<% @assets = Asset.where("page_id = #{@page.id}")#.order("section.id ASC") %>
+<% @assets.each do |as| %>
+<div class="left">
+  <div class="leftcol">
+    <%= image_tag("#{as.url+as.filename}", width: "350px", border: "1px solid black") %>
+  </div>
+  <div class="rightcol" style="border: 1px solid #3a3;">
+    <%= as.value  %>
+  </div>
+</div>
+<div class="clr"></div>
+<% end %>
+
+
+<%#= link_to 'Back', pages_path %>

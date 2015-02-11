@@ -1,0 +1,9 @@
+<div class="right"><h1><%#= current_user.email[/[^@]+/] %>my documents</h1></div>
+<br>
+<%= link_to 'return to document list', documents_path, :class=>'likeabutton' %>
+<div class="clr"></div>
+<hr />
+
+<%= render 'form' %>
+<br />
+<br />

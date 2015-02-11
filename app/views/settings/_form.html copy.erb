@@ -1,0 +1,51 @@
+<%= form_for(@setting) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :default_template %><br>
+    <%#= f.number_field :default_template %>
+	<%= collection_select(:template_id, 0, ::Template.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :default_language %><br>
+    <%#= f.number_field :default_language %>
+	<%= collection_select(:setting_default_language, 0, Language.all, :id, :full) %>
+  </div>
+  <div class="field">
+    <%= f.label :default_notification %><br>
+    <%= f.text_field :default_notification %>
+  </div>
+  <div class="field">
+    <%= f.label :notify_complete %><br>
+    <%= f.check_box :notify_complete %>
+  </div>
+  <div class="field">
+    <%= f.label :trimLeft %><br>
+    <%= f.number_field :trimLeft %>
+  </div>
+  <div class="field">
+    <%= f.label :trimRight %><br>
+    <%= f.number_field :trimRight %>
+  </div>
+  <div class="field">
+    <%= f.label :trimTop %><br>
+    <%= f.number_field :trimTop %>
+  </div>
+  <div class="field">
+    <%= f.label :trimBottom %><br>
+    <%= f.number_field :trimBottom %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

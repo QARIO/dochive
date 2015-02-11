@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  document_id: 1
+  template_id: 1
+  page_id: 1
+  path: MyString
+  url: MyString
+  filename: MyString
+  description: MyString
+  public: false
+
+two:
+  document_id: 1
+  template_id: 1
+  page_id: 1
+  path: MyString
+  url: MyString
+  filename: MyString
+  description: MyString
+  public: false

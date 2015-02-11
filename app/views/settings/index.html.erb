@@ -1,0 +1,43 @@
+<h1>Listing settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Default template</th>
+      <th>Default language</th>
+      <th>Default notification</th>
+      <th>Notify complete</th>
+      <th>Trimleft</th>
+      <th>Trimright</th>
+      <th>Trimtop</th>
+      <th>Trimbottom</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.user_id %></td>
+        <td><%= setting.default_template %></td>
+        <td><%= setting.default_language %></td>
+        <td><%= setting.default_notification %></td>
+        <td><%= setting.notify_complete %></td>
+        <td><%= setting.trimLeft %></td>
+        <td><%= setting.trimRight %></td>
+        <td><%= setting.trimTop %></td>
+        <td><%= setting.trimBottom %></td>
+        <td><%= link_to 'Show', setting %></td>
+        <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
+        <td><%= link_to 'Destroy', setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Setting', new_setting_path %>

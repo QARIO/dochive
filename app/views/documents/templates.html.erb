@@ -1,0 +1,32 @@
+<div class="right"><h1>active templates</h1></div>
+<br>
+
+<div class="clr"></div>
+<hr />
+<br />
+
+<table>
+  <thead>
+    <tr style="text-align: left;">
+      <th width="200px" class="tem">page #</th>
+      <th width="400px" class="tem">template</th>
+    </tr>
+  </thead>
+  <% i=1 %>
+    <tbody>
+  <% @pages.each do |page| %>
+
+      <tr>
+        <td width="200px" class="tem"> page <%= i %></td>
+        <td width="400px" class="tem"><%= page.template_id %></td>
+      </tr>
+
+  <% i=i+1 %>
+  <%#end%>
+  <% end %>
+    </tbody>
+</table>
+
+
+
+<div class="clr"></div>

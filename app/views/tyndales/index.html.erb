@@ -1,0 +1,31 @@
+<h1>Listing tyndales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full</th>
+      <th>Short</th>
+      <th>Enabled</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tyndales.each do |tyndale| %>
+      <tr>
+        <td><%= tyndale.full %></td>
+        <td><%= tyndale.short %></td>
+        <td><%= tyndale.enabled %></td>
+        <td><%= link_to 'Show', tyndale %></td>
+        <td><%= link_to 'Edit', edit_tyndale_path(tyndale) %></td>
+        <td><%= link_to 'Destroy', tyndale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tyndale', new_tyndale_path %>

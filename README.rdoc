@@ -1,0 +1,56 @@
+# dochive
+
+This version of DocHive introduces many new features. It is still a work in progress, however, it is very functional. Today my second son Lucien will be born, so I better start sharing this code :)
+
+	What can you do:
+	Signup for an account
+	Click on Files
+	Upload a document and click convert. 
+	Upload a document and create new templates for your pages, then convert.
+
+
+Buggy Notes: 
+
+You will need to refresh on the Files and Data pages to see updates.
+This version is designed to strictly support imaged based PDFs. 
+On Linux the /tmp file may not remove generated Magick files. Manual cleanup periodically may be required.
+PDF images are currently expected in a Portrait style, Landscape images may be distorted.
+Data exported may appear in duplicates if you are using the default 'selfie' template.
+
+* Ruby version
+
+	Ruby 2.0.0p247
+
+* System dependencies
+
+	RMagick
+	Tesseract
+	MySQL
+
+* Configuration
+
+* Database creation
+
+	create dochive_mysql_development
+
+* Database initialization
+
+* How to run the test suite
+
+	rails s 
+	(and run the background job)
+
+* Services (job queues, cache servers, search engines, etc.)
+
+In a separate command window execute the following command to start the background worker job. 
+
+	bundle exec rake jobs:work
+
+* Deployment instructions
+
+On Linux uncomment, the line in the gemfile for therubyracer
+
+	gem 'therubyracer', platforms: :ruby
+
+
+

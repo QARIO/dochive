@@ -1,0 +1,2 @@
+module TyndalesHelper
+end

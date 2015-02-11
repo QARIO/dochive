@@ -1,0 +1,58 @@
+<h1>Listing pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Document</th>
+      <th>User</th>
+      <th>Template</th>
+      <th>Number</th>
+      <th>Dpi</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Top</th>
+      <th>Bottom</th>
+      <th>Left</th>
+      <th>Right</th>
+      <th>Path</th>
+      <th>Url</th>
+      <th>Filename</th>
+      <th>Exclude</th>
+      <th>Public</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.document_id %></td>
+        <td><%= page.user_id %></td>
+        <td><%= page.template_id %></td>
+        <td><%= page.number %></td>
+        <td><%= page.dpi %></td>
+        <td><%= page.height %></td>
+        <td><%= page.width %></td>
+        <td><%= page.top %></td>
+        <td><%= page.bottom %></td>
+        <td><%= page.left %></td>
+        <td><%= page.right %></td>
+        <td><%= page.path %></td>
+        <td><%= page.url %></td>
+        <td><%= page.filename %></td>
+        <td><%= page.exclude %></td>
+        <td><%= page.public %></td>
+        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_page_path %>
+<%#= link_to t('newpage'), new_page_path %>

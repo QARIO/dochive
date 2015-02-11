@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @section.template_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @section.name %>
+</p>
+
+<p>
+  <strong>Yorigin:</strong>
+  <%= @section.yOrigin %>
+</p>
+
+<p>
+  <strong>Xorigin:</strong>
+  <%= @section.xOrigin %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @section.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @section.height %>
+</p>
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

@@ -1,0 +1,45 @@
+<h1>Listing assets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Section</th>
+      <th>Path</th>
+      <th>Url</th>
+      <th>Filename</th>
+      <th>Tpath</th>
+      <th>Turl</th>
+      <th>Tfilename</th>
+      <th>Language</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assets.each do |asset| %>
+      <tr>
+        <td><%= asset.page_id %></td>
+        <td><%= asset.section_id %></td>
+        <td><%= asset.path %></td>
+        <td><%= asset.url %></td>
+        <td><%= asset.filename %></td>
+        <td><%= asset.tpath %></td>
+        <td><%= asset.turl %></td>
+        <td><%= asset.tfilename %></td>
+        <td><%= asset.language %></td>
+        <td><%= asset.value %></td>
+        <td><%= link_to 'Show', asset %></td>
+        <td><%= link_to 'Edit', edit_asset_path(asset) %></td>
+        <td><%= link_to 'Destroy', asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asset', new_asset_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  template_id: 1
+  name: MyString
+  yOrigin: 1
+  xOrigin: 1
+  width: 1
+  height: 1
+
+two:
+  template_id: 1
+  name: MyString
+  yOrigin: 1
+  xOrigin: 1
+  width: 1
+  height: 1
