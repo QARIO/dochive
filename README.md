@@ -4,10 +4,8 @@
 This version of DocHive introduces many new features. It is still a work in progress, however, it is very functional. Today my second son Lucien will be born, so I better start sharing this code :)
 
 	What can you do:
-	Signup for an account
-	Click on Files
-	Upload a document and click convert. 
-	Upload a document and create new templates for your pages, then convert.
+	Upload a image based pdf and click convert. OCR each page.
+	Upload a image based pdf and create new templates for your pages, then convert. OCR only select regions.
 
 
 ## Buggy Notes: 
