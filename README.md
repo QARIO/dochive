@@ -70,4 +70,4 @@ PDF images are currently expected in a Portrait style, Landscape images may be d
 Data exported may appear in duplicates if you are using the default 'selfie' template.
 
 ### Initial Release on 11 February 2015
-A few hour later Lucien Shoa Brian Duncan was born.
+A few hours later Lucien Shoa Brian Duncan was born.
