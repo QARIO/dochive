@@ -9,15 +9,6 @@ This version of DocHive introduces many new features. It is still a work in prog
 	
 	Test with the include file "UN Report-28th Session-1973.pdf"
 
-
-### Buggy Notes: 
-
-You will need to refresh on the Files and Data pages to see updates.
-This version is designed to strictly support imaged based PDFs. 
-On Linux the /tmp file may not remove generated Magick files. Manual cleanup periodically may be required.
-PDF images are currently expected in a Portrait style, Landscape images may be distorted.
-Data exported may appear in duplicates if you are using the default 'selfie' template.
-
 ### Ruby version
 
 	Ruby 2.0.0p247
@@ -69,6 +60,14 @@ uncomment line 7, comment out line 6
 
 	#require 'Gchart'
   	require 'googlecharts' 
+
+### Buggy Notes: 
+
+You will need to refresh on the Files and Data pages to see updates.
+This version is designed to strictly support imaged based PDFs. 
+On Linux the /tmp file may not remove generated Magick files. Manual cleanup periodically may be required.
+PDF images are currently expected in a Portrait style, Landscape images may be distorted.
+Data exported may appear in duplicates if you are using the default 'selfie' template.
 
 ### Initial Release on 11 February 2015
 A few hour later Lucien Shoa Brian Duncan was born.
