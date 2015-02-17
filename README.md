@@ -34,7 +34,7 @@ Install the Tesseract language packages needed
 
 ### Database creation
 
-1. create dochive_mysql_development in MySQL
+Create dochive_mysql_development in MySQL
 
 ### Database initialization
 
