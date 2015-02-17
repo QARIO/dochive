@@ -38,12 +38,14 @@ Install the Tesseract language packages needed
 
 ### Database initialization
 
-1. Rename the file '/config/default.database.yml' to '/config/database.yml' and update your database user, password, and any other relavant settings.
+Rename the file '/config/default.database.yml' to '/config/database.yml' and update your database user, password, and any other relavant settings.
 
-2. Build the table structure
+Build the table structure
+
 	bundle exec rake db:migrate RAILS_ENV=development
 
-3. Seed the database
+Seed the database
+
 	bundle exec rake db:seed
 
 ### How to run the application and background queues
