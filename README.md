@@ -54,11 +54,17 @@ Install the Tesseract language packages needed
 
 		bundle exec rake jobs:work
 
-## Deployment instructions
+## Linux Deployment instructions
 
-On Linux uncomment the line in the gemfile for therubyracer
+In the gemfile, uncomment the line for therubyracer
 
 	gem 'therubyracer', platforms: :ruby
+	
+In the /app/controllers/documents_controller.rb, 
+uncomment line 7, comment out line 6
+
+	#require 'Gchart'
+  	require 'googlecharts' 
 
 
 
