@@ -1,14 +1,16 @@
 # dochive 
-### by Queen Anne's Revenge: Open Source Skunkworks
+#### by Queen Anne's Revenge: Open Source Skunkworks
 
-This version of DocHive introduces many new features. It is still a work in progress, however, it is very functional. Today my second son Lucien will be born, so I better start sharing this code :)
+This version of DocHive introduces many new features. It is still a work in progress, however, it is very functional. 
 
 	What can you do:
 	Upload a image based pdf and click convert. OCR each page.
 	Upload a image based pdf and create new templates for your pages, then convert. OCR only select regions.
+	
+	Test with the include file "UN Report-28th Session-1973.pdf"
 
 
-## Buggy Notes: 
+### Buggy Notes: 
 
 You will need to refresh on the Files and Data pages to see updates.
 This version is designed to strictly support imaged based PDFs. 
@@ -16,45 +18,45 @@ On Linux the /tmp file may not remove generated Magick files. Manual cleanup per
 PDF images are currently expected in a Portrait style, Landscape images may be distorted.
 Data exported may appear in duplicates if you are using the default 'selfie' template.
 
-## Ruby version
+### Ruby version
 
 	Ruby 2.0.0p247
 
-## System dependencies
+### System dependencies
 
 	RMagick
 	Tesseract 
 	MySQL
 
-## Configuration
+### Configuration
 
 Install the Tesseract language packages needed 
 
-## Database creation
+### Database creation
 
-	1. create dochive_mysql_development in MySQL
+1. create dochive_mysql_development in MySQL
 
-## Database initialization
+### Database initialization
 
-	1. Rename the file '/config/default.database.yml' to '/config/database.yml' and update your database user, password, and any other relavant settings.
+1. Rename the file '/config/default.database.yml' to '/config/database.yml' and update your database user, password, and any other relavant settings.
 
-	2. Build the table structure
-		bundle exec rake db:migrate RAILS_ENV=development
+2. Build the table structure
+	bundle exec rake db:migrate RAILS_ENV=development
 
-	3. Seed the database
-		bundle exec rake db:seed
+3. Seed the database
+	bundle exec rake db:seed
 
-## How to run the application and background queues
+### How to run the application and background queues
 
-	In terminal #1 execute the following to run the rails applications
+In terminal #1 execute the following to run the rails applications
 
-		rails s 
+	rails s 
 
-	In terminal #2 execute the following command to start the background worker job. 
+In terminal #2 execute the following command to start the background worker job. 
 
-		bundle exec rake jobs:work
+	bundle exec rake jobs:work
 
-## Linux Deployment instructions
+### Linux Deployment instructions
 
 In the gemfile, uncomment the line for therubyracer
 
@@ -66,5 +68,5 @@ uncomment line 7, comment out line 6
 	#require 'Gchart'
   	require 'googlecharts' 
 
-
-
+### Initial Release on 11 February 2015
+A few hour later Lucien Shoa Brian Duncan was born.
