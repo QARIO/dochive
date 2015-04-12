@@ -71,7 +71,9 @@ Data exported may appear in duplicates if you are using the default 'selfie' tem
 
 ### Initial QAR Release on 11 February 2015
 
-	E Brian Duncan
+	Edward Brian Duncan
 	Charles C Duncan
 	Damarius L Hayes
 	Paul McCarn
+
+QAR projects are released under the terms of the MIT license
