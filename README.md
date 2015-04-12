@@ -69,7 +69,7 @@ On Linux the /tmp file may not remove generated Magick files. Manual cleanup per
 PDF images are currently expected in a Portrait style, Landscape images may be distorted.
 Data exported may appear in duplicates if you are using the default 'selfie' template.
 
-### Initial QAR DocHive Release on 11 February 2015
+### Initial QAR dochive Release on 11 February 2015
 
 	Edward Brian Duncan
 	Charles C Duncan
