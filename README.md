@@ -74,6 +74,7 @@ Data exported may appear in duplicates if you are using the default 'selfie' tem
 	Edward Brian Duncan
 	Charles C Duncan
 	Damarius L Hayes
+	Jeff Provencher
 	Paul McCarn
 
 QAR projects are released under the terms of the MIT license
